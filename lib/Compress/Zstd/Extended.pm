@@ -7,5 +7,6 @@ use strict;
 
 use Compress::Zstd::Compressor;
 use Compress::Zstd::Decompressor;
+use Compress::Zstd::Dictionary;
 
 1;

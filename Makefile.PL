@@ -5,7 +5,6 @@
 use strict;
 use warnings;
 
-use 5.008001;
 use ExtUtils::MakeMaker;
 
 my %WriteMakefileArgs = (
@@ -16,7 +15,6 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "Compress-Zstd-Extended",
   "LICENSE" => "perl",
-  "MIN_PERL_VERSION" => "5.008001",
   "NAME" => "Compress::Zstd::Extended",
   "PREREQ_PM" => {
     "XSLoader" => 0,
@@ -34,8 +32,9 @@ my %WriteMakefileArgs = (
 
 %WriteMakefileArgs = (
     %WriteMakefileArgs,
-    CCFLAGS => '-Iext/zstd/lib',
-    OBJECT => '$(BASEEXT)$(OBJ_EXT) ext/zstd/lib/libzstd.a',
+    XSMULTI => 1,
+    CCFLAGS => '-I. -Iext/zstd/lib',
+    MYEXTLIB => 'ext/zstd/lib/libzstd.a',
 );
 
 my %FallbackPrereqs = (
